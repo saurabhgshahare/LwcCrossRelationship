@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Search Accounts" icon-name="standard:case">
+        <lightning-input 
+            class="reduce-width-input"
+            value={searchTerm}
+            onchange={handleSearchTermChange}
+            onkeypress={handleKeyPress}>
+        </lightning-input>
+        <br>
+        <lightning-button
+            variant="brand"
+            label="Search"
+            onclick={handleSearch}>
+        </lightning-button>
+        <template if:true={isSearchPerformed}>
+            <c-search-result search-key={searchKey}></c-search-result>
+        </template>
+    </lightning-card>
+</template>

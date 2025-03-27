@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Related Contacts" icon-name="standard:contact">
+        <lightning-button variant="outline-brand" label="Create Contact" onclick={handleCreateContact}></lightning-button>
+
+        <template if:true={contacts}>
+            
+            <lightning-datatable
+                key-field="Id"
+                data={contacts}
+                columns={columns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+
+        <template if:true={error}>
+            <c-error-panel errors={error}></c-error-panel>
+        </template>
+
+        <template if:true={hasNoContacts}>
+            <p>No related contacts found.</p>
+        </template>
+        <br>
+        <template if:true={isCreateModalOpen}>
+            <c-create-contact 
+                account-id={accountId} 
+                onclose={closeCreateModal} 
+                onsave={handleSaveContact}>
+            </c-create-contact>
+        </template>
+
+        
+        <template if:true={isViewModalOpen}>
+            <c-view-contact 
+                contact-id={selectedContactId} 
+                onclose={closeViewModal}>
+            </c-view-contact>
+        </template>
+    </lightning-card>
+</template>
