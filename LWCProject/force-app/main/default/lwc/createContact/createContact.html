@@ -1,0 +1,36 @@
+<template>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+           
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleClose}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading_medium">Create Contact</h2>
+            </header>
+            <br>
+             </br>
+            
+            <div class="slds-modal__content slds-p-around_medium">
+                <lightning-record-edit-form 
+                    object-api-name="Contact" 
+                    onsuccess={handleSuccess} 
+                    onerror={handleError}>
+                    <lightning-input-field field-name="FirstName"></lightning-input-field>
+                    <lightning-input-field field-name="LastName" required></lightning-input-field>
+                    <lightning-input-field field-name="Email"></lightning-input-field>
+                    <lightning-input-field field-name="Phone"></lightning-input-field>
+                    <lightning-input-field field-name="AccountId" value={accountId}></lightning-input-field>
+                </lightning-record-edit-form>
+            </div>
+
+           
+            <footer class="slds-modal__footer">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+                <lightning-button variant="brand" type="submit" label="Save" onclick={handleSave}></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
