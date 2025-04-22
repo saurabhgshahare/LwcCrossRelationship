@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Searched Result">
+        <template if:true={accounts}>
+            <lightning-datatable
+                key-field="Id"
+                data={accounts}
+                columns={columns}
+                draft-values={draftValues}
+                onsave={handleSave}
+                oncancel={handleCancel}
+                onrowselection={handleRowSelection}
+                max-row-selection="1"
+                selected-rows={selectedRows}>
+            </lightning-datatable>
+        </template>
+        <template if:false={accounts}>
+            <div align="center">
+                No accounts found.
+            </div>
+        </template>
+    </lightning-card>
+</template>

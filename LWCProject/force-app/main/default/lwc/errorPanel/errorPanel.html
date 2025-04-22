@@ -1,0 +1,11 @@
+<template>
+    <template if:true={errors}>
+        <lightning-card title="Error" icon-name="utility:error">
+            <ul>
+                <template for:each={errors} for:item="error">
+                    <li key={error}>{error}</li>
+                </template>
+            </ul>
+        </lightning-card>
+    </template>
+</template>
